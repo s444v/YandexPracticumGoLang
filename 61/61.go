@@ -22,7 +22,7 @@ func CreateToken(id int, name string) (string, error) {
 	jwtToken := jwt.NewWithClaims(jwt.SigningMethodHS256, claim)
 	signedToken, err := jwtToken.SignedString([]byte(secretKey))
 	if err != nil {
-		return "", fmt.Errorf("Cant sign token:%d", err)
+		return "", err
 	}
 	return signedToken, nil
 
